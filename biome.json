@@ -1,0 +1,137 @@
+{
+    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "assist": {
+        "actions": {
+            "source": {
+                "organizeImports": {
+                    "level": "on",
+                    "options": {
+                        "groups": [
+                            {
+                                "type": true
+                            }
+                        ]
+                    }
+                },
+                "useSortedAttributes": "on",
+                "useSortedKeys": "off"
+            }
+        }
+    },
+    "files": {
+        "includes": [
+            "**/*.{js,ts,jsx,tsx,json}",
+            "**/.vscode/**/*",
+            "**/index.html",
+            "**/vite.config.js",
+            "!**/src/routeTree.gen.ts",
+            "!**/src/styles.css"
+        ]
+    },
+    "formatter": {
+        "attributePosition": "auto",
+        "bracketSpacing": true,
+        "enabled": true,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineWidth": 120
+    },
+    "javascript": {
+        "formatter": {
+            "arrowParentheses": "always",
+            "bracketSameLine": false,
+            "bracketSpacing": true,
+            "enabled": true,
+            "jsxQuoteStyle": "single",
+            "quoteProperties": "asNeeded",
+            "quoteStyle": "single",
+            "semicolons": "asNeeded",
+            "trailingCommas": "none"
+        }
+    },
+    "json": {
+        "formatter": {
+            "trailingCommas": "none"
+        }
+    },
+    "linter": {
+        "domains": {
+            "next": "recommended",
+            "react": "recommended"
+        },
+        "enabled": true,
+        "rules": {
+            "a11y": {
+                "noSvgWithoutTitle": "off",
+                "useSemanticElements": "on",
+                "useValidAnchor": "on"
+            },
+            "complexity": {
+                "useArrowFunction": "error"
+            },
+            "correctness": {
+                "noChildrenProp": "off",
+                "noUnknownFunction": "error",
+                "noUnusedImports": {
+                    "fix": "safe",
+                    "level": "error"
+                },
+                "noUnusedVariables": {
+                    "fix": "safe",
+                    "level": "error"
+                },
+                "useExhaustiveDependencies": "off",
+                "useHookAtTopLevel": "error"
+            },
+            "nursery": {
+                "useSortedClasses": {
+                    "fix": "safe",
+                    "level": "error",
+                    "options": {
+                        "attributes": ["classList"],
+                        "functions": ["cn", "tv", "composeRenderProps", "cx"]
+                    }
+                }
+            },
+            "performance": {
+                "noImgElement": "off"
+            },
+            "recommended": true,
+            "style": {
+                "noNonNullAssertion": "off",
+                "noParameterAssign": "warn",
+                "useConst": {
+                    "fix": "unsafe",
+                    "level": "warn"
+                },
+                "useImportType": "error",
+                "useNamingConvention": "off",
+                "useNumberNamespace": "off",
+                "useTemplate": {
+                    "fix": "safe",
+                    "level": "warn"
+                },
+                "noHeadElement": "off"
+            },
+            "security": {
+                "noDangerouslySetInnerHtml": "off"
+            },
+            "suspicious": {
+                "noArrayIndexKey": "off",
+                "noConsole": {
+                    "level": "error",
+                    "options": {
+                        "allow": ["assert", "error", "info", "warn"]
+                    }
+                },
+                "noExplicitAny": "off",
+                "noUnknownAtRules": "off"
+            }
+        }
+    },
+    "vcs": {
+        "clientKind": "git",
+        "enabled": true,
+        "useIgnoreFile": true
+    }
+}

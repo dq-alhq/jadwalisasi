@@ -1,0 +1,19 @@
+{
+    "projectName": "jadwalisasi",
+    "mode": "file-router",
+    "typescript": true,
+    "packageManager": "bun",
+    "includeExamples": false,
+    "tailwind": true,
+    "addOnOptions": {
+        "prisma": {
+            "database": "postgres"
+        }
+    },
+    "envVarValues": {},
+    "git": true,
+    "routerOnly": false,
+    "version": 1,
+    "framework": "react",
+    "chosenAddOns": ["biome", "prisma", "compiler", "form", "shadcn", "better-auth"]
+}
