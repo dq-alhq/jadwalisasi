@@ -52,10 +52,8 @@ const ModalContent = ({
     const isDismissable = isDismissableInternal ?? role !== 'alertdialog'
     return (
         <ModalOverlay
-            data-slot='modal-overlay'
-            isDismissable={isDismissable}
             className={cx(
-                'fixed start-0 top-0 z-50 h-(--visual-viewport-height,100vh) w-screen',
+                'fixed inset-s-0 top-0 z-50 h-(--visual-viewport-height,100vh) w-screen',
                 'bg-bg/15 backdrop-blur-[1px] motion-reduce:backdrop-blur-none',
                 'grid grid-rows-[1fr_auto] justify-items-center sm:grid-rows-[1fr_auto_3fr]',
                 'entering:fade-in entering:animate-in entering:duration-300 entering:ease-out',
@@ -63,10 +61,11 @@ const ModalContent = ({
                 size === 'fullscreen' ? 'md:p-3' : 'md:p-4',
                 overlay?.className
             )}
+            data-slot='modal-overlay'
+            isDismissable={isDismissable}
             {...props}
         >
             <ModalPrimitive
-                data-slot='modal-content'
                 className={cx(
                     'row-start-2 w-full text-start align-middle',
                     '[--visual-viewport-vertical-padding:16px]',
@@ -80,6 +79,7 @@ const ModalContent = ({
                     'exiting:slide-out-to-bottom sm:exiting:zoom-out-95 sm:exiting:slide-out-to-bottom-0 exiting:animate-out exiting:ease-in',
                     className
                 )}
+                data-slot='modal-content'
             >
                 <Dialog role={role}>
                     {(values) => (

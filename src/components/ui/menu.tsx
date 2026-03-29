@@ -121,7 +121,9 @@ const MenuItem = ({ className, intent, children, ...props }: MenuItemProps) => {
 
                     {typeof children === 'function' ? children(values) : children}
 
-                    {values.hasSubmenu && <ChevronRightIcon className='absolute end-2 size-3.5' data-slot='chevron' />}
+                    {values.hasSubmenu && (
+                        <ChevronRightIcon className='absolute inset-e-2 size-3.5' data-slot='chevron' />
+                    )}
                 </>
             )}
         </MenuItemPrimitive>
