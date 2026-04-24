@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as AppIndexRouteImport } from './routes/_app/index'
-import { Route as ApiShiftsRouteImport } from './routes/api/shifts'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AppImportRouteImport } from './routes/_app/import'
 import { Route as AppEditRouteImport } from './routes/_app/edit'
@@ -31,11 +30,6 @@ const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppRoute,
-} as any)
-const ApiShiftsRoute = ApiShiftsRouteImport.update({
-  id: '/api/shifts',
-  path: '/api/shifts',
-  getParentRoute: () => rootRouteImport,
 } as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/login',
@@ -69,7 +63,6 @@ export interface FileRoutesByFullPath {
   '/edit': typeof AppEditRoute
   '/import': typeof AppImportRoute
   '/login': typeof AuthLoginRoute
-  '/api/shifts': typeof ApiShiftsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesByTo {
@@ -78,7 +71,6 @@ export interface FileRoutesByTo {
   '/edit': typeof AppEditRoute
   '/import': typeof AppImportRoute
   '/login': typeof AuthLoginRoute
-  '/api/shifts': typeof ApiShiftsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesById {
@@ -89,29 +81,14 @@ export interface FileRoutesById {
   '/_app/edit': typeof AppEditRoute
   '/_app/import': typeof AppImportRoute
   '/_auth/login': typeof AuthLoginRoute
-  '/api/shifts': typeof ApiShiftsRoute
   '/_app/': typeof AppIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/dashboard'
-    | '/edit'
-    | '/import'
-    | '/login'
-    | '/api/shifts'
-    | '/api/auth/$'
+  fullPaths: '/' | '/dashboard' | '/edit' | '/import' | '/login' | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/dashboard'
-    | '/edit'
-    | '/import'
-    | '/login'
-    | '/api/shifts'
-    | '/api/auth/$'
+  to: '/' | '/dashboard' | '/edit' | '/import' | '/login' | '/api/auth/$'
   id:
     | '__root__'
     | '/_app'
@@ -120,7 +97,6 @@ export interface FileRouteTypes {
     | '/_app/edit'
     | '/_app/import'
     | '/_auth/login'
-    | '/api/shifts'
     | '/_app/'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
@@ -128,7 +104,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRouteWithChildren
-  ApiShiftsRoute: typeof ApiShiftsRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -154,13 +129,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
-    }
-    '/api/shifts': {
-      id: '/api/shifts'
-      path: '/api/shifts'
-      fullPath: '/api/shifts'
-      preLoaderRoute: typeof ApiShiftsRouteImport
-      parentRoute: typeof rootRouteImport
     }
     '/_auth/login': {
       id: '/_auth/login'
@@ -229,7 +197,6 @@ const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRouteWithChildren,
-  ApiShiftsRoute: ApiShiftsRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport
